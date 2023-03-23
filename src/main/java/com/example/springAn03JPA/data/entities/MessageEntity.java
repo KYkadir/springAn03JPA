@@ -1,6 +1,7 @@
-package data.entities;
+package com.example.springAn03JPA.data.entities;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -8,11 +9,15 @@ import java.util.Objects;
 
 public class MessageEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     private UserEntity sender;
-    private UserEntity receiver;
+    @ManyToMany
+    private List<UserEntity> receivers;
+
+    private String subject;
+    private String body;
     public MessageEntity(){}
 
     public Long getId() {
@@ -31,12 +36,28 @@ public class MessageEntity {
         this.sender = sender;
     }
 
-    public UserEntity getReceiver() {
-        return receiver;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setReceiver(UserEntity receiver) {
-        this.receiver = receiver;
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public List<UserEntity> getReceivers() {
+        return receivers;
+    }
+
+    public void setReceivers(List<UserEntity> receivers) {
+        this.receivers = receivers;
     }
 
     @Override
@@ -57,7 +78,7 @@ public class MessageEntity {
         return "MessageEntity{" +
                 "id=" + id +
                 ", sender=" + sender +
-                ", receiver=" + receiver +
+                ", receiver=" + receivers +
                 '}';
     }
 }

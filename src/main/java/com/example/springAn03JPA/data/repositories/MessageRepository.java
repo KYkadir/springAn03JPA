@@ -1,6 +1,6 @@
-package data.repositories;
+package com.example.springAn03JPA.data.repositories;
 
-import data.entities.MessageEntity;
+import com.example.springAn03JPA.data.entities.MessageEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MessageRepository extends JpaRepository<MessageEntity,Long> {

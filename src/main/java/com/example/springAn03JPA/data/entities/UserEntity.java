@@ -1,6 +1,6 @@
-package data.entities;
+package com.example.springAn03JPA.data.entities;
 
-import data.UserStatus;
+import com.example.springAn03JPA.data.UserStatus;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -9,7 +9,7 @@ import java.util.Objects;
 @Table(name="tbl_users")
 public class UserEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
     private String pass;
